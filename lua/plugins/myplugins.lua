@@ -110,6 +110,23 @@ local plugins = {
   --   event = "VeryLazy",
   -- },
   {
+    "echasnovski/mini.surround",
+    config = function()
+      require("mini.surround").setup {
+        mappings = {
+          add = "gza", -- Add surrounding in Normal and Visual modes
+          delete = "gzd", -- Delete surrounding
+          find = "gzf", -- Find surrounding (to the right)
+          find_left = "gzF", -- Find surrounding (to the left)
+          highlight = "gzh", -- Highlight surrounding
+          replace = "gzr", -- Replace surrounding
+          update_n_lines = "gzn", -- Update `n_lines`
+        },
+      }
+    end,
+    event = "VeryLazy",
+  },
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -188,6 +205,16 @@ local plugins = {
       }
     end,
     ft = { "javascriptreact", "javascript.jsx", "typescriptreact" },
+  },
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_general_viewer = "okular"
+      vim.g.vimtex_view_general_options = "--unique file:@pdf#src:@line@tex"
+    end,
   },
 }
 
